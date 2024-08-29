@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-studi-deploy
+  labels:
+    app: angular-studi
+    stack: frontend
+spec :
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-studi
+  template:
+    metadata:
+      labels:
+        app: angular-studi
+    spec:
+      containers:
+        - name: angular-studi
+          image: "europe-west9-docker.pkg.dev/263351285635/angular-studi:v1"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
